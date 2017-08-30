@@ -1,18 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import  {HttpModule} from '@angular/http';
+import  {HttpModule, Http, XHRBackend, RequestOptions} from '@angular/http';
 
 import { AppComponent } from './app.component';
+import {httpFactory} from './common/http.factory';
+import { LinkPageComponent } from './link-page/link-page.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LinkPageComponent,
+    HomePageComponent
   ],
   imports: [
     HttpModule,
     BrowserModule
   ],
-  providers: [],
+  providers: [{
+    provide: Http,
+    useFactory: httpFactory,
+    deps: [XHRBackend, RequestOptions]
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
