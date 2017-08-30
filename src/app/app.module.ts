@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import  {HttpModule, Http, XHRBackend, RequestOptions} from '@angular/http';
+import {HttpModule, Http, XHRBackend, RequestOptions} from '@angular/http';
+import { MdButtonModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule } from '@angular/material';
+import 'hammerjs';
 
 import { AppComponent } from './app.component';
 import {httpFactory} from './common/http.factory';
@@ -15,7 +17,8 @@ import { HomePageComponent } from './home-page/home-page.component';
   ],
   imports: [
     HttpModule,
-    BrowserModule
+    BrowserModule,
+    MdButtonModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule
   ],
   providers: [{
     provide: Http,
