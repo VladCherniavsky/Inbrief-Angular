@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import {httpFactory} from './common/http.factory';
 import { LinkPageComponent } from './link-page/link-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { NavigationBarComponent } from './common/navigation-bar/navigation-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LinkPageComponent,
-    HomePageComponent
+    HomePageComponent,
+    NavigationBarComponent
   ],
   imports: [
     HttpModule,
