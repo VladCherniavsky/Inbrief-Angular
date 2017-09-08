@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import {HttpModule, Http, XHRBackend, RequestOptions} from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes, CanActivate } from '@angular/router';
@@ -41,6 +41,7 @@ const routes: Routes = [
     NavigationButtonComponent
   ],
   imports: [
+
     HttpModule,
     BrowserModule,
     MdButtonModule,
@@ -49,6 +50,7 @@ const routes: Routes = [
     MdToolbarModule,
     MdIconModule,
     BrowserAnimationsModule,
+    NavigationBarComponent,
     RouterModule.forRoot(routes, { useHash: true })
 
   ],
@@ -57,6 +59,7 @@ const routes: Routes = [
     useFactory: httpFactory,
     deps: [XHRBackend, RequestOptions]
   }, AuthGuard],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
