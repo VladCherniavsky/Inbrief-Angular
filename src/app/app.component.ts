@@ -4,17 +4,15 @@ import {LinkService} from './services/link.service/link.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  providers: [LinkService]
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
   title = 'app';
 
-  constructor(private _linkService: LinkService) {
+  constructor() {
 
   }
 
   ngOnInit() {
-    this._linkService.get().subscribe(res => console.log('res', res));
   }
 }

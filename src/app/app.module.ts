@@ -18,6 +18,8 @@ import { NavigationBarComponent } from './components/navigation-bar/navigation-b
 import { LoginPageComponent } from './login-page/login-page.component';
 import {AuthGuard} from './guards/auth-guard/auth.guard';
 import { NavigationButtonComponent } from './components/common/navigation-button/navigation-button.component';
+import {LinkResolver} from './resolvers/link.resolver';
+import {LinkService} from './services/link.service/link.service';
 
 const routes: Routes = [
   {
@@ -28,6 +30,13 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomePageComponent
+  },
+  {
+    path: 'links',
+    component: LinkPageComponent,
+    resolve: {
+      links: LinkResolver
+    }
   }
 ];
 
@@ -50,15 +59,19 @@ const routes: Routes = [
     MdToolbarModule,
     MdIconModule,
     BrowserAnimationsModule,
-    NavigationBarComponent,
     RouterModule.forRoot(routes, { useHash: true })
 
   ],
-  providers: [{
-    provide: Http,
-    useFactory: httpFactory,
-    deps: [XHRBackend, RequestOptions]
-  }, AuthGuard],
+  providers: [
+    LinkResolver,
+    LinkService,
+    AuthGuard,
+    {
+      provide: Http,
+      useFactory: httpFactory,
+      deps: [XHRBackend, RequestOptions]
+    }
+  ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   bootstrap: [AppComponent]
 })
