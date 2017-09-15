@@ -6,6 +6,7 @@ import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { MdButtonModule,
   MdCardModule, MdMenuModule,
   MdToolbarModule, MdIconModule,
+  MdProgressSpinnerModule
 } from '@angular/material';
 
 import 'hammerjs';
@@ -20,6 +21,8 @@ import {AuthGuard} from './guards/auth-guard/auth.guard';
 import { NavigationButtonComponent } from './components/common/navigation-button/navigation-button.component';
 import {LinkResolver} from './resolvers/link.resolver';
 import {LinkService} from './services/link.service/link.service';
+import {AuthService} from './services/auth.service/auth.service';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 const routes: Routes = [
   {
@@ -47,7 +50,8 @@ const routes: Routes = [
     HomePageComponent,
     NavigationBarComponent,
     LoginPageComponent,
-    NavigationButtonComponent
+    NavigationButtonComponent,
+    SpinnerComponent
   ],
   imports: [
 
@@ -59,12 +63,13 @@ const routes: Routes = [
     MdToolbarModule,
     MdIconModule,
     BrowserAnimationsModule,
+    MdProgressSpinnerModule,
     RouterModule.forRoot(routes, { useHash: true })
-
   ],
   providers: [
     LinkResolver,
     LinkService,
+    AuthService,
     AuthGuard,
     {
       provide: Http,
