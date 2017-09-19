@@ -3,16 +3,31 @@ import { ConnectionBackend, RequestOptions, Request, RequestOptionsArgs, Respons
 import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
+import {RequestCounterService} from '../services/request-counter.service/request-counter.service';
 
 @Injectable()
 
 export class InterceptedHttp extends Http {
-  constructor(backend: ConnectionBackend, defaultOptions: RequestOptions) {
+  constructor(backend: ConnectionBackend, defaultOptions: RequestOptions, private requestCounterService: RequestCounterService) {
     super(backend, defaultOptions);
   }
 
   request(url: string | Request, options?: RequestOptionsArgs): Observable<Response> {
-    return super.request(url, options);
+
+    const handleResponse = () => {
+      this.requestCounterService.decrease();
+    };
+
+    const handleError = (err) => {
+      this.requestCounterService.decrease();
+      return err;
+    };
+
+    this.requestCounterService.increase();
+
+    return super.request(url, options)
+      .do(handleResponse)
+      .catch(handleError);
   }
 
   get(url: string, options?: RequestOptionsArgs): Observable<Response> {

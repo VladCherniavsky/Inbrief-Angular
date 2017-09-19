@@ -24,6 +24,7 @@ import {LinkService} from './services/link.service/link.service';
 import {AuthService} from './services/auth.service/auth.service';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import {UsersPageComponent} from './users-page/users-page.component';
+import {RequestCounterService} from './services/request-counter.service/request-counter.service';
 
 const routes: Routes = [
   {
@@ -77,10 +78,11 @@ const routes: Routes = [
     LinkService,
     AuthService,
     AuthGuard,
+    RequestCounterService,
     {
       provide: Http,
       useFactory: httpFactory,
-      deps: [XHRBackend, RequestOptions]
+      deps: [XHRBackend, RequestOptions, RequestCounterService]
     }
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],

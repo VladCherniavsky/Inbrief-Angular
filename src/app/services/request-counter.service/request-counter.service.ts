@@ -21,4 +21,8 @@ export class RequestCounterService {
     }
   }
 
+  public getCount(): number {
+    return this._requestCount.getValue();
+  }
+
 }
