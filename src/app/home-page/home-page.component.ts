@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import {AuthService} from '../services/auth.service/auth.service';
 
 @Component({
@@ -7,7 +7,6 @@ import {AuthService} from '../services/auth.service/auth.service';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-
   constructor(private authService: AuthService) { }
 
   ngOnInit() {

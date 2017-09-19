@@ -23,6 +23,7 @@ import {LinkResolver} from './resolvers/link.resolver';
 import {LinkService} from './services/link.service/link.service';
 import {AuthService} from './services/auth.service/auth.service';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import {UsersPageComponent} from './users-page/users-page.component';
 
 const routes: Routes = [
   {
@@ -40,6 +41,10 @@ const routes: Routes = [
     resolve: {
       links: LinkResolver
     }
+  },
+  {
+    path: 'users',
+    component: UsersPageComponent
   }
 ];
 
@@ -51,7 +56,8 @@ const routes: Routes = [
     NavigationBarComponent,
     LoginPageComponent,
     NavigationButtonComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    UsersPageComponent
   ],
   imports: [
 

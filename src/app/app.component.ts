@@ -13,10 +13,6 @@ export class AppComponent implements OnInit {
 
   }
 
-  click() {
-    alert();
-  }
-
   ngOnInit() {
   }
 }
