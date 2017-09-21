@@ -25,6 +25,7 @@ import {AuthService} from './services/auth.service/auth.service';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import {UsersPageComponent} from './users-page/users-page.component';
 import {RequestCounterService} from './services/request-counter.service/request-counter.service';
+import {TableComponent} from './components/common/table/table.component';
 
 const routes: Routes = [
   {
@@ -58,7 +59,8 @@ const routes: Routes = [
     LoginPageComponent,
     NavigationButtonComponent,
     SpinnerComponent,
-    UsersPageComponent
+    UsersPageComponent,
+    TableComponent
   ],
   imports: [
 
