@@ -1,0 +1,29 @@
+.table {
+  position: relative;
+  min-width: 80%;
+
+  &__th, &__td {
+    text-align: left;
+  }
+
+
+  @media (max-width: 800px) {
+    tr {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin: 0.5em 0;
+      border: 1px solid rgba(3,3,3,0.2);
+    }
+
+    &__th, &__td{
+      flex: 1 1 200px;
+      border: 0.5px solid rgba(3,3,3,0.2);
+    }
+  }
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
