@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import {HttpModule, Http, XHRBackend, RequestOptions} from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule, Routes, CanActivate } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { MdButtonModule,
   MdCardModule, MdMenuModule,
   MdToolbarModule, MdIconModule,
@@ -17,15 +17,17 @@ import { LinkPageComponent } from './link-page/link-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { LoginPageComponent } from './login-page/login-page.component';
-import {AuthGuard} from './guards/auth-guard/auth.guard';
+import { AuthGuard } from './guards/auth-guard/auth.guard';
 import { NavigationButtonComponent } from './components/common/navigation-button/navigation-button.component';
-import {LinkResolver} from './resolvers/link.resolver';
-import {LinkService} from './services/link.service/link.service';
-import {AuthService} from './services/auth.service/auth.service';
+import { LinkResolver} from './resolvers/link.resolver';
+import { LinkService } from './services/link.service/link.service';
+import { AuthService } from './services/auth.service/auth.service';
 import { SpinnerComponent } from './components/spinner/spinner.component';
-import {UsersPageComponent} from './users-page/users-page.component';
-import {RequestCounterService} from './services/request-counter.service/request-counter.service';
-import {TableComponent} from './components/common/table/table.component';
+import { UsersPageComponent} from './users-page/users-page.component';
+import { RequestCounterService } from './services/request-counter.service/request-counter.service';
+import { TableComponent } from './components/common/table/table.component';
+import { PaginationComponent } from './components/common/pagination/pagination.component';
+import {GlobalVariablesService} from './services/global-variables.service/global-variables.service';
 
 const routes: Routes = [
   {
@@ -60,7 +62,8 @@ const routes: Routes = [
     NavigationButtonComponent,
     SpinnerComponent,
     UsersPageComponent,
-    TableComponent
+    TableComponent,
+    PaginationComponent
   ],
   imports: [
 
@@ -80,6 +83,7 @@ const routes: Routes = [
     LinkService,
     AuthService,
     AuthGuard,
+    GlobalVariablesService,
     RequestCounterService,
     {
       provide: Http,

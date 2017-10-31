@@ -6,12 +6,14 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-      <td class="table__td">      a    </td>
-      <td class="table__td">      b    </td>
-
+    <tr *ngFor="let row of (_data | async)?.links">
+      <td class="table__td" *ngFor="let column of columns"> {{row[column]}}</td>
     </tr>
     </tbody>
+    <app-pagination *ngIf="pagination"
+                    [numberOfItems]="(_data | async)?.count">
+    </app-pagination>
+    {{(_data | async)?.count}} aaa
   </table>
 </div>
 

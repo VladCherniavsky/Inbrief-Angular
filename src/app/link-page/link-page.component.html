@@ -1,3 +1,7 @@
 <p>
   link-page works!
 </p>
+<app-table [data]="linkResponse | async"
+           [columns]="['link', 'shortLink']"
+           [pagination]="true">
+</app-table>

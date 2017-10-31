@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Component({
   selector: 'app-table',
@@ -6,10 +7,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit {
-  columns = ['name', 'age'];
-  constructor() { }
+   _data = new BehaviorSubject<any>(null);
+
+  @Input()
+  set data(data) {
+    this._data.next(data);
+  }
+
+  @Input()
+  pagination: Boolean = false;
+
+  @Input()
+  columns: string[] = [];
+
+  constructor() {
+    console.log('this constructor', this);
+
+  }
 
   ngOnInit() {
+    console.log('this ngOnInit', this);
   }
 
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {AuthService} from '../services/auth.service/auth.service';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Component({
   selector: 'app-link-page',
@@ -8,18 +8,12 @@ import {AuthService} from '../services/auth.service/auth.service';
   styleUrls: ['./link-page.component.scss']
 })
 export class LinkPageComponent implements OnInit {
+  linkResponse: BehaviorSubject<any> = new BehaviorSubject(null);
 
-  constructor(private route: ActivatedRoute, private authService: AuthService) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    console.log('this', this.route.snapshot.data);
-    this.authService
-      .IsLogged
-      .subscribe((data) => {
-        console.log('data link page', data);
-      });
-
-
+    this.linkResponse.next(this.route.snapshot.data.links);
   }
 
 }
