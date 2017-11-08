@@ -13,7 +13,7 @@ export class LinkModel {
     this.clicks = obj.clicks;
     this.shortLink = obj.shortLink;
     this.link = obj.link;
-    this.userId = new UserModel(obj.userId);
+    this.userId = new UserModel(obj);
     this.tags = obj.tags;
   }
 }

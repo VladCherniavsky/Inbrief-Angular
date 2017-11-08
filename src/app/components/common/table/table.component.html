@@ -1,19 +1,19 @@
-<div class="wrapper">
+<div class="container">
   <table class="table">
     <thead>
     <tr>
-      <th *ngFor="let column of columns" class="table__th">{{column}}</th>
+      <th *ngFor="let column of columns">{{column}}</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let row of (_data | async)?.links">
-      <td class="table__td" *ngFor="let column of columns"> {{row[column]}}</td>
+      <td *ngFor="let column of columns"> {{row[column]}}</td>
     </tr>
     </tbody>
     <app-pagination *ngIf="pagination"
                     [numberOfItems]="(_data | async)?.count">
     </app-pagination>
-    {{(_data | async)?.count}} aaa
+    {{(_data | async)?.count}}
   </table>
 </div>
 
