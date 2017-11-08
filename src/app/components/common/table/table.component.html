@@ -1,13 +1,23 @@
-<div class="wrapper">
-  <table class="table">
+<div class="container">
+  <table class="table table-responsive">
     <thead>
     <tr>
-      <th *ngFor="let column of columns" class="table__th">{{column}}</th>
+      <th *ngFor="let column of columns">{{column}}</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let row of (_data | async)?.links">
-      <td class="table__td" *ngFor="let column of columns"> {{row[column]}}</td>
+      <ng-container *ngFor="let column of columns">
+
+        <td *ngIf="column === 'actions'; else elseBlock">actions</td>
+
+        <ng-template #elseBlock>
+          <td>
+            {{row[column]}}
+          </td>
+        </ng-template>
+
+      </ng-container>
     </tr>
     </tbody>
     <app-pagination *ngIf="pagination"
