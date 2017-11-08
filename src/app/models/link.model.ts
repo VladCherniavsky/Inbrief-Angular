@@ -1,12 +1,12 @@
 import {UserModel} from './user.model';
 
 export class LinkModel {
-  _id: string = null;
-  clicks: number = 0;
-  shortLink: string = null;
-  link: string = null;
-  userId: UserModel = null;
-  tags: string [] = [];
+  _id: string;
+  clicks: number;
+  shortLink: string;
+  link: string;
+  userId: UserModel;
+  tags: string [];
 
   constructor(obj: any) {
     this._id = obj._id;

@@ -1,5 +1,6 @@
 <div class="container">
-  <table class="table">
+
+  <table class="table table-responsive">
     <thead>
     <tr>
       <th *ngFor="let column of columns">{{column}}</th>
@@ -8,6 +9,18 @@
     <tbody>
     <tr *ngFor="let row of (_data | async)?.links">
       <td *ngFor="let column of columns"> {{row[column]}}</td>
+
+      <ng-container *ngFor="let column of columns">
+
+        <td *ngIf="column === 'actions'; else elseBlock">actions</td>
+
+        <ng-template #elseBlock>
+          <td>
+            {{row[column]}}
+          </td>
+        </ng-template>
+
+      </ng-container>
     </tr>
     </tbody>
     <app-pagination *ngIf="pagination"

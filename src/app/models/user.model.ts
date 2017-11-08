@@ -1,7 +1,7 @@
 export class UserModel {
-  _id: string = null;
+  _id: string;
   isAdmin: boolean = false;
-  email: string = null;
+  email: string;
 
   constructor(obj: any) {
     this._id = obj._id;
